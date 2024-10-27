@@ -1,0 +1,122 @@
+declare module 'virtual-select' {
+    interface VirtualSelectOptions {
+      ele: string | HTMLElement;
+      options: Array<string | SelectOption>;
+      valueKey?: string;
+      labelKey?: string;
+      textKey?: string;
+      aliasKey?: string;
+      descriptionKey?: string;
+      multiple?: boolean;
+      search?: boolean;
+      searchGroup?: boolean;
+      hideClearButton?: boolean;
+      disableSelectAll?: boolean;
+      optionsCount?: number;
+      optionHeight?: string;
+      position?: 'auto' | 'top' | 'bottom';
+      zIndex?: number;
+      selectedValue?: string | string[];
+      hasOptionDescription?: boolean;
+      disabledOptions?: string[];
+      noOptionsText?: string;
+      noSearchResultsText?: string;
+      selectAllText?: string;
+      searchPlaceholderText?: string;
+      optionsSelectedText?: string;
+      optionSelectedText?: string;
+      allOptionsSelectedText?: string;
+      clearButtonText?: string;
+      moreText?: string;
+      placeholder?: string;
+      dropboxWidth?: string;
+      tooltipFontSize?: string;
+      tooltipAlignment?: 'left' | 'center' | 'right';
+      tooltipMaxWidth?: string;
+      showSelectedOptionsFirst?: boolean;
+      markSearchResults?: boolean;
+      keepAlwaysOpen?: boolean;
+      maxValues?: number;
+      addNewOptionText?: string;
+      allowNewOption?: boolean;
+      showDropboxAsPopup?: boolean;
+      popupDropboxBreakpoint?: string;
+      onServerSearch?: (search: string) => Promise<Array<string | SelectOption>>;
+      labelRenderer?: (data: SelectOption) => string;
+      hideValueTooltipOnSelectAll?: boolean;
+      showOptionsOnlyOnSearch?: boolean;
+      selectAllOnlyVisible?: boolean;
+      alwaysShowSelectedOptionsCount?: boolean;
+      disableAllOptionsSelectedText?: boolean;
+      useGroupValue?: boolean;
+      showGroupOptionCount?: boolean;
+      groupBy?: string;
+      onInit?: () => void;
+      onBeforeOpen?: () => void;
+      onAfterOpen?: () => void;
+      onBeforeClose?: () => void;
+      onAfterClose?: () => void;
+      onSearch?: (search: string) => void;
+      onOptionSelect?: (option: SelectOption) => void;
+      onOptionDisable?: (option: SelectOption) => void;
+      onNewOptionAdd?: (option: SelectOption) => void;
+      onBeforeValueSet?: (newValue: string | string[]) => void;
+      onValueSet?: (newValue: string | string[]) => void;
+    }
+  
+    interface SelectOption {
+      value: string;
+      label: string;
+      alias?: string;
+      description?: string;
+      customData?: any;
+      [key: string]: any;
+    }
+  
+    class VirtualSelect {
+      constructor(options: VirtualSelectOptions);
+      setValue(value: string | string[]): void;
+      setOptions(options: Array<string | SelectOption>): void;
+      setDisabledOptions(values: string[]): void;
+      toggleSelectAll(isSelected?: boolean): void;
+      isAllSelected(): boolean;
+      addOption(option: SelectOption): void;
+      getNewValue(): string | string[];
+      getDisplayValue(): string;
+      getSelectedOptions(): SelectOption[];
+      open(): void;
+      close(): void;
+      destroy(): void;
+      reset(): void;
+      focus(): void;
+      enable(): void;
+      disable(): void;
+      validate(): boolean;
+      toggleRequired(isRequired: boolean): void;
+      setServerOptions(options: Array<string | SelectOption>): void;
+      static init(options: VirtualSelectOptions | VirtualSelectOptions[]): void;
+      static reset(): void;
+      static setValueMethod(ele: HTMLElement, newValue: string | string[]): void;
+      static setOptionsMethod(ele: HTMLElement, options: Array<string | SelectOption>): void;
+      static setDisabledOptionsMethod(ele: HTMLElement, disabledOptions: string[]): void;
+      static setOptionProp(ele: HTMLElement, index: number, key: string, value: any): void;
+      static getNewValueMethod(ele: HTMLElement): string | string[];
+      static getDisplayValueMethod(ele: HTMLElement): string;
+      static getSelectedOptionsMethod(ele: HTMLElement): SelectOption[];
+      static openMethod(ele: HTMLElement): void;
+      static closeMethod(ele: HTMLElement): void;
+      static focusMethod(ele: HTMLElement): void;
+      static destroyMethod(ele: HTMLElement): void;
+      static resetMethod(ele: HTMLElement): void;
+      static isAllSelectedMethod(ele: HTMLElement): boolean;
+      static addOptionMethod(ele: HTMLElement, option: SelectOption): void;
+      static getSelectedValueMethod(ele: HTMLElement): string | string[];
+      static toggleSelectAllMethod(ele: HTMLElement, isSelected?: boolean): void;
+      static isValidMethod(ele: HTMLElement): boolean;
+      static toggleRequiredMethod(ele: HTMLElement, isRequired: boolean): void;
+      static onResizeMethod(): void;
+      static setServerOptionsMethod(ele: HTMLElement, options: Array<string | SelectOption>): void;
+    }
+  
+    export = VirtualSelect;
+  }
