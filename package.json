@@ -3,6 +3,7 @@
   "version": "1.0.46",
   "description": "A javascript plugin for dropdown with virtual scroll",
   "types": "types/virtual-select.d.ts",
+  "typings": "types/virtual-select.d.ts",
   "scripts": {
     "start": "webpack --mode development --watch",
     "build": "webpack --mode production",
